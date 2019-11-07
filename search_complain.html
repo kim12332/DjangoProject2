@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Search Complain Form</title>
+  <link rel="stylesheet" href="{% static 'css/CompAppstyle.css' %}">
+</head>
+<body>
+  <div id="header">
+    <h1>Crime Complaint Portal</h1>
+    <div id="nav">
+      <a href="/CompApp/view-complain">View all</a>
+        <a href="/CompApp/new-complain">Add new</a>
+          <a href="/CompApp/search-complain">Search complain</a>
+          <a href="/CompApp/logout">logout</a>
+    </div>
+  </div>
+  <div id="main">
+    <h2>Search complain record</h2>
+    <form action="/CompApp/search" method="post">
+      {% csrf_token %}
+      {{form}}
+      <input type="submit" value="search">
+    </form>
+    {% if b %}
+    <table>
+      <thead>
+        <th>Complain_id</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Phone_no</th>
+        <th>Address</th>
+      </thead>
+    {% endif %}
+    {% for co in b %}
+    <tr>
+      <td>{{co.complain_id}}</td>
+      <td>{{co.Name}}</td>
+      <td>{{co.Category}}</td>
+      <td>{{co.Phone_no}}</td>
+      <td>{{co.Address}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  </div>
+
+
+</body>
+</html>

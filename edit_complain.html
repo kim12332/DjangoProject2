@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Edit Complain Form</title>
+  <link rel="stylesheet" href="{% static 'css/CompAppstyle.css' %}">
+</head>
+<body>
+  <div id="header">
+    <h1>Crime Complaint Portal</h1>
+    <div id="nav">
+      <a href="/CompApp/view-complain">View all</a>
+        <a href="/CompApp/new-complain">Add new</a>
+          <a href="/CompApp/search-complain">Search Complain</a>
+          <a href="/CompApp/logout">logout</a>
+    </div>
+  </div>
+  <div id="main">
+    <h2>Edit complain record</h2>
+    <form action="/CompApp/edit" method="post">
+      {% csrf_token %}
+      <input type="hidden" name="complainid" value="{{ b.complain_id }}">
+      {{form}}
+    <input type="submit" value="save">
+    </form>
+
+  </div>
+
+
+</body>
+</html>

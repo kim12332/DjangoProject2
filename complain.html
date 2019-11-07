@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>complain data</title>
+  </head>
+  <body>
+    <h1> Complain info</h1>
+    {% if c %}
+    <table>
+      <thead>
+        <th>Complain id</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Phone No.</th>
+        <th>Address</th>
+      </thead>
+      {% for co in c %}
+      <tr>
+      <td>{{co.complain_id}}</td>
+      <td>{{co.Name}}</td>
+      <td>{{co.Category}}</td>
+      <td>{{co.Phone_no}}</td>
+      <td>{{co.Address}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+      <p>No Record Found</p>
+    {% endif %}
+  </body>
+</html>

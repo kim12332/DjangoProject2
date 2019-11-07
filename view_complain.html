@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>view complain record</title>
+  <link rel="stylesheet" href="{% static 'css/CompAppstyle.css' %}">
+</head>
+<body>
+  <div id="header">
+    <h1>Crime Complaint Portal</h1>
+    <div id="nav">
+      <a href="/CompApp/view-complain">View all</a>
+        <a href="/CompApp/new-complain">Add new</a>
+          <a href="/CompApp/search-complain">Search Complain</a>
+          <a href="/CompApp/logout">logout</a>
+    </div>
+    <h2>Hello,{{username}}</h2>
+  </div>
+  <div id="main">
+    <h2>view complain records</h2>
+    <table>
+    <thead>
+      <th>Complain id</th>
+      <th>Category</th>
+      <th>Phone_no</th>
+      <th>Address</th>
+    </thead>
+    {% for c in b %}
+    <tr>
+      <td>{{c.complain_id}}</td>
+      <td>{{c.Category}}</td>
+      <td>{{c.Phone_no}}</td>
+      <td>{{c.Address}}</td>
+      <td><a class="btn" href="/CompApp/edit-complain?complainid={{c.complain_id}}">    Edit</a></td>
+      <td><a class="btn" href="/CompApp/delete-complain?complainid={{c.complain_id}}">   Delete</a></td>
+    </tr>
+    {% endfor %}
+
+    </table>
+
+  </div>
+
+
+</body>
+</html>
